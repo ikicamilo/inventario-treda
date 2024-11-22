@@ -5,14 +5,9 @@ const sequelize = new Sequelize({
   username: config.db.user,
   password: config.db.password,
   database: config.db.database,
+  port: config.db.port,
   host: config.db.host,
   dialect: "mysql",
 });
-
-// const User = require("../entities/User");
-// const Sede = require("../entities/Sede");
-
-// User.associate({ Sede });
-// Sede.associate({ User });
 
 module.exports = sequelize;

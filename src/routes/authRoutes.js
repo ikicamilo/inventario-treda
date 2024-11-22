@@ -1,6 +1,5 @@
 const express = require("express");
 const { check } = require("express-validator");
-const authenticateJWT = require("../middlewares/authMiddlewares");
 const authController = require("../controllers/authControllers");
 
 const router = express.Router();
@@ -33,8 +32,6 @@ const router = express.Router();
  *                   type: array
  *                   items:
  *                     $ref: "#/components/schemas/Usuario"
- *     security:
- *     - BearerAuth: []
  *       500:
  *         description: SERVER ERROR
  *         content:
@@ -54,7 +51,6 @@ const router = express.Router();
  */
 router.post(
   "/register",
-  authenticateJWT,
   [
     check("nomUsu")
       .not()
