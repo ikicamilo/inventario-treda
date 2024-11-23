@@ -5,6 +5,54 @@ const categoriaController = require("../controllers/categoriaController");
 
 const router = express.Router();
 
+/**
+ * @openapi
+ * /api/categoria/create:
+ *   post:
+ *     tags:
+ *       - Creación de Categorias
+ *     requestBody:
+ *       description: Objeto JSON de la *categoria* - HABILITADA SOLO PARA ADMINS
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Categoria"
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: "#/components/schemas/Categoria"
+ *     security:
+ *     - BearerAuth: []
+ *       500:
+ *         description: SERVER ERROR
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Server Error"
+ */
+
 router.post(
   "/create",
   authenticateJWT,

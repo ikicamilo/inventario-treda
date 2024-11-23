@@ -1,3 +1,47 @@
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Proveedor:
+ *       type: object
+ *       properties:
+ *         codIntProv:
+ *           type: integer
+ *           readOnly: true
+ *           description: "Código del proveedor (Autoincrementable)"
+ *           x-auto-increment: true
+ *         nomProv:
+ *           type: string
+ *           example: Coratiendas
+ *           description: "nombre del proveedor"
+ *         contProv:
+ *           type: string
+ *           example: Pedro Perez
+ *           description: "Contacto que representa al proveedor"
+ *         dirProv:
+ *           type: string
+ *           example: Calle falsa 123
+ *           description: "Dirección del proveedor"
+ *         telProv:
+ *           type: string
+ *           example: 3333333333
+ *           description: "Teléfono del proveedor"
+ *         emailProv:
+ *           type: string
+ *           example: pedro@hotmail.com
+ *           description: "Teléfono del proveedor"
+ *         createdAt:
+ *           type: timestamp
+ *           readOnly: true
+ *           example: 2024-11-12T03:19:49.000Z
+ *           description: "Fecha de creación"
+ *         updatedAt:
+ *           type: timestamp
+ *           readOnly: true
+ *           example: 2024-11-12T03:19:49.000Z
+ *           description: "Fecha de actualización"
+ */
+
 module.exports = (sequelize, DataTypes) => {
   const Proveedor = sequelize.define(
     "Proveedor",

@@ -80,7 +80,7 @@ router.post(
  *             properties:
  *               emailUsu:
  *                 type: string
- *                 example: tommy@yahoo
+ *                 example: admin1@gmail.com
  *               passUsu:
  *                 type: string
  *                 example: hola1234
@@ -129,5 +129,45 @@ router.post(
   ],
   authController.loginUser
 );
+
+/**
+ * @openapi
+ * /api/auth/all-users:
+ *   get:
+ *     tags:
+ *       - Usuarios
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: "#/components/schemas/Usuario"
+ *       500:
+ *         description: SERVER ERROR
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Server Error"
+ */
+router.get("/all-users", authController.getAllUsuarios);
 
 module.exports = router;

@@ -5,6 +5,54 @@ const inventarioController = require("../controllers/inventarioController");
 
 const router = express.Router();
 
+/**
+ * @openapi
+ * /api/inventario/create:
+ *   post:
+ *     tags:
+ *       - Creación de Transacción en el Inventario
+ *     requestBody:
+ *       description: Objeto JSON de *transacciones inventario* - Habilitada para todos los usuarios
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Transacciones_inventario"
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: "#/components/schemas/Transacciones_inventario"
+ *     security:
+ *     - BearerAuth: []
+ *       500:
+ *         description: SERVER ERROR
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Server Error"
+ */
+
 router.post(
   "/create",
   authenticateJWT,

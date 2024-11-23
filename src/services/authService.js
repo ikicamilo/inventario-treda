@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { Usuario } = require("../models");
+const { Usuario, Sede } = require("../models");
 const { hashPassword } = require("../utils/hashPassword");
 
 const register = async (nomUsu, emailUsu, passUsu, rolUsu, codSed) => {
@@ -44,7 +44,21 @@ const login = async (emailUsu, passUsu) => {
   return token;
 };
 
+const getAllUsuarios = async () => {
+  return await Usuario.findAll({
+    include: [
+      {
+        model: Sede,
+        as: "sedes",
+        attributes: ["nomSed"],
+      },
+    ],
+    order: [["updatedAt", "DESC"]],
+  });
+};
+
 module.exports = {
   register,
   login,
+  getAllUsuarios,
 };

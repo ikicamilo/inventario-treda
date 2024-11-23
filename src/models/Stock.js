@@ -1,3 +1,39 @@
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Stock:
+ *       type: object
+ *       properties:
+ *         codIntNivStc:
+ *           type: integer
+ *           readOnly: true
+ *           description: "Código del Nivel de Stock (Autoincrementable)"
+ *           x-auto-increment: true
+ *         codProd:
+ *           type: integer
+ *           example: 100
+ *           description: "Código del Producto, llave foránea de (Productos)"
+ *         codSed:
+ *           type: integer
+ *           example: 100
+ *           description: "Código de la sede, llave foránea de (Sedes)"
+ *         cantNivStc:
+ *           type: integer
+ *           example: 100
+ *           description: "Cantidad de items en el stock"
+ *         createdAt:
+ *           type: timestamp
+ *           readOnly: true
+ *           example: 2024-11-12T03:19:49.000Z
+ *           description: "Fecha de creación"
+ *         updatedAt:
+ *           type: timestamp
+ *           readOnly: true
+ *           example: 2024-11-12T03:19:49.000Z
+ *           description: "Fecha de actualización"
+ */
+
 module.exports = (sequelize, DataTypes) => {
   const Stock = sequelize.define(
     "Stock",

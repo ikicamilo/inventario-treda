@@ -21,6 +21,9 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Inventario Treda Web Service");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/sede", sedeRoutes);
 app.use("/api/proveedor", proveedorRoutes);

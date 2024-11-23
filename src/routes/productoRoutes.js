@@ -78,6 +78,61 @@ router.post(
   productoController.createProducto
 );
 
+/**
+ * @openapi
+ * /api/producto/update/{codProd}:
+ *   put:
+ *     tags:
+ *       - Actualizar Producto
+ *     parameters:
+ *       - in: path
+ *         name: codProd
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Código del Producto
+ *     requestBody:
+ *       description: Objeto JSON del *producto*
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Producto"
+ *     security:
+ *     - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: "#/components/schemas/Producto"
+ *       500:
+ *         description: SERVER ERROR
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Server Error"
+ */
 router.put(
   "/update/:codProd",
   authenticateJWT,
@@ -104,6 +159,56 @@ router.put(
   productoController.updateProducto
 );
 
+/**
+ * @openapi
+ * /api/producto/delete/{codProd}:
+ *   delete:
+ *     tags:
+ *       - Eliminar producto
+ *     parameters:
+ *       - in: path
+ *         name: codProd
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Código del Producto
+ *     security:
+ *     - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ *                       example: "Producto eliminado correctamente"
+ *       500:
+ *         description: SERVER ERROR
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Server Error"
+ */
 router.delete(
   "/delete/:codProd",
   authenticateJWT,

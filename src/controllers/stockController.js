@@ -7,7 +7,7 @@ const getStockProductoSede = async (req, res) => {
     res.json(stock);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({ message: `${error}` });
   }
 };
 

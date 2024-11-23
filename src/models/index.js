@@ -11,6 +11,11 @@ const Stock = require("./Stock")(sequelize, DataTypes);
 
 Sede.associate({ Usuario, Inventario, Stock });
 
+Usuario.belongsTo(Sede, {
+  foreignKey: "codSed",
+  as: "sedes",
+});
+
 Proveedor.associate({ Producto });
 Categoria.associate({ Producto });
 

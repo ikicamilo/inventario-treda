@@ -39,13 +39,12 @@ const createInventario = async (req, res) => {
     }
   } catch (err) {
     console.error(err);
-    res
-      .status(500)
-      .json({
-        message:
-          err.original.sqlMessage ||
-          "Server error - durante registro de inventario",
-      });
+    res.status(500).json({
+      message:
+        err?.original?.sqlMessage ||
+        `${err}` ||
+        "Server error - durante registro de inventario",
+    });
   }
 };
 

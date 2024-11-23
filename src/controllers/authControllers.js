@@ -38,7 +38,18 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getAllUsuarios = async (req, res) => {
+  try {
+    const usuarios = await authService.getAllUsuarios();
+    res.json(usuarios);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
+  getAllUsuarios,
 };
